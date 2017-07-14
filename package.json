@@ -1,0 +1,44 @@
+{
+  "name": "react-bootstrap4-modal",
+  "version": "1.0.0",
+  "description": "A simple Bootstrap 4 modal component in React",
+  "main": "lib/index.js",
+  "repository": "https://github.com/nbudin/react-bootstrap4-modal",
+  "author": "Nat Budin <natbudin@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "npm run lint",
+    "build": "npm run build:lib && npm run build:dist",
+    "build:lib": "babel src --out-dir lib --copy-files",
+    "build:dist": "webpack --config webpack.config.js --progress",
+    "prepublish": "npm run build",
+    "lint": "eslint --ext .js --ext .jsx src",
+    "lint:fix": "eslint --ext .js --ext .jsx src --fix",
+    "webpack:analyze": "webpack --config webpack.config.js --json | webpack-bundle-size-analyzer"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "compression-webpack-plugin": "^0.4.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.2",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "react": "^15.6.1",
+    "webpack": "^3.2.0",
+    "webpack-bundle-size-analyzer": "^2.7.0"
+  },
+  "peerDependencies": {
+    "react": "^15.6.1"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "prop-types": "^15.5.10"
+  }
+}
