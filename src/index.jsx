@@ -21,6 +21,7 @@ class Modal extends React.Component {
     };
   }
 
+  // Shenanigans to allow the CSS fade to happen before we stop rendering the dialog or divs
   componentDidUpdate = (prevProps) => {
     if (this.props.visible !== prevProps.visible) {
       this.setState({ transitioning: true }, () => {
