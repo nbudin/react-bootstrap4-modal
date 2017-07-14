@@ -6,6 +6,11 @@
   "repository": "https://github.com/nbudin/react-bootstrap4-modal",
   "author": "Nat Budin <natbudin@gmail.com>",
   "license": "MIT",
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ],
   "scripts": {
     "test": "npm run lint",
     "build": "npm run build:lib && npm run build:dist",
