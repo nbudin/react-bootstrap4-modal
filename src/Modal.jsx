@@ -34,6 +34,10 @@ class Modal extends React.Component {
     }
   }
 
+  stopPropagation = (event) => {
+    event.stopPropagation();
+  }
+
   renderBackdrop = () => {
     if (this.state.visible || this.state.transitioning) {
       return (
@@ -58,7 +62,7 @@ class Modal extends React.Component {
         tabIndex="-1"
         onClick={this.props.onClickBackdrop}
       >
-        <div className="modal-dialog" role="document">
+        <div className="modal-dialog" role="document" onClick={this.stopPropagation}>
           <div className="modal-content">
             {this.props.children}
           </div>
