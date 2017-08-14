@@ -55,6 +55,8 @@ class Modal extends React.Component {
         style={{ display: ((this.state.visible || this.state.transitioning) ? 'block' : 'none') }}
         role="dialog"
         aria-hidden={!this.state.visible}
+        tabIndex="-1"
+        onClick={this.props.onClickBackdrop}
       >
         <div className="modal-dialog" role="document">
           <div className="modal-content">
