@@ -1,12 +1,7 @@
 {
   "presets": [
     "react",
-    ["env", {
-      "targets": {
-        "node": "current",
-        "uglify": true
-      }
-    }]
+    "env"
   ],
   "plugins": [
     "transform-class-properties",
