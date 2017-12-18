@@ -2,6 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+let modalsShowing = 0;
+
+function modalWillShow() {
+  if (modalsShowing === 0) {
+    document.body.classList.add('modal-open');
+  }
+
+  modalsShowing += 1;
+}
+
+function modalWillHide() {
+  modalsShowing -= 1;
+
+  if (modalsShowing === 0) {
+    document.body.classList.remove('modal-open');
+  }
+}
+
 class Modal extends React.Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
@@ -21,9 +39,21 @@ class Modal extends React.Component {
     };
   }
 
+  componentWillMount = () => {
+    if (this.props.visible) {
+      modalWillShow();
+    }
+  }
+
   // Shenanigans to allow the CSS fade to happen before we stop rendering the dialog or divs
   componentDidUpdate = (prevProps) => {
     if (this.props.visible !== prevProps.visible) {
+      if (this.props.visible) {
+        modalWillShow();
+      } else {
+        modalWillHide();
+      }
+
       this.setState({ transitioning: true }, () => {
         window.requestAnimationFrame(() => {
           this.setState({ visible: this.props.visible }, () => {
@@ -31,6 +61,12 @@ class Modal extends React.Component {
           });
         });
       });
+    }
+  }
+
+  componentWillUnmount = () => {
+    if (this.props.visible) {
+      modalWillHide();
     }
   }
 
