@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    ModalTester: './src/ModalTester',
+    index: './src/index',
   },
 
   output: {
