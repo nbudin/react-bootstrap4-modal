@@ -1,7 +1,15 @@
 {
   "presets": [
     "react",
-    "latest",
-    "stage-0"
+    ["env", {
+      "targets": {
+        "node": "current",
+        "uglify": true
+      }
+    }]
+  ],
+  "plugins": [
+    "transform-class-properties",
+    "transform-object-rest-spread"
   ]
 }
