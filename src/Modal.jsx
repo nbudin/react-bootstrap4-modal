@@ -100,7 +100,7 @@ class Modal extends React.Component {
         tabIndex="-1"
         onClick={this.props.onClickBackdrop}
       >
-        <div className={classNames('modal-dialog', { 'modal-lg': this.props.large }, { 'modal-sm': this.props.small )} role="document" onClick={this.stopPropagation}>
+        <div className={classNames('modal-dialog', { 'modal-lg': this.props.large }, { 'modal-sm': this.props.small })} role="document" onClick={this.stopPropagation}>
           <div className="modal-content">
             {this.props.children}
           </div>
