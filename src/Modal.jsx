@@ -31,6 +31,8 @@ class Modal extends React.Component {
 
   static defaultProps = {
     onClickBackdrop: null,
+    wrapperProps: null,
+    className: null,
   };
 
   constructor(props) {
