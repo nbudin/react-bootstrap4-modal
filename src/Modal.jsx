@@ -127,6 +127,7 @@ class Modal extends React.Component {
         {this.renderBackdrop()}
       </div>
     );
+  }
 }
 
 export default Modal;
