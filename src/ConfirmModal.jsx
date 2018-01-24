@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from './index';
 
-const ConfirmModal = ({ visible, onOK, onCancel, children }) => (
-  <Modal visible={visible}>
+const ConfirmModal = ({ visible, onOK, onCancel, children, ...other }) => (
+  <Modal visible={visible} {...other}>
     <div className="modal-header">
       <h5 className="modal-title">Confirmation</h5>
     </div>
