@@ -25,6 +25,8 @@ class Modal extends React.Component {
     children: PropTypes.node.isRequired,
     onClickBackdrop: PropTypes.func,
     visible: PropTypes.bool.isRequired,
+    wrapperProps: PropTypes.object,
+    className: PropTypes.string,
   };
 
   static defaultProps = {
@@ -95,32 +97,31 @@ class Modal extends React.Component {
       className,
       visible,
       onClickBackdrop,
-      onOK,
-      onCancel,
       ...other
     } = this.props;
 
-    return <div
-      {...wrapperProps}
-    >
+    return (
       <div
-        className={classNames('modal', 'fade', { show: this.state.visible }, className)}
-        style={{ display: ((this.state.visible || this.state.transitioning) ? 'block' : 'none') }}
-        role="dialog"
-        aria-hidden={!this.state.visible}
-        tabIndex="-1"
-        onClick={this.props.onClickBackdrop}
-        {...other}
+        {...wrapperProps}
       >
-        <div className="modal-dialog" role="document" onClick={this.stopPropagation}>
-          <div className="modal-content">
-            {this.props.children}
+        <div
+          className={classNames('modal', 'fade', { show: this.state.visible }, className)}
+          style={{ display: ((this.state.visible || this.state.transitioning) ? 'block' : 'none') }}
+          role="dialog"
+          aria-hidden={!this.state.visible}
+          tabIndex="-1"
+          onClick={this.props.onClickBackdrop}
+          {...other}
+        >
+          <div className="modal-dialog" role="document" onClick={this.stopPropagation}>
+            <div className="modal-content">
+              {this.props.children}
+            </div>
           </div>
         </div>
+        {this.renderBackdrop()}
       </div>
-      {this.renderBackdrop()}
-    </div>
-  };
+    );
 }
 
 export default Modal;
