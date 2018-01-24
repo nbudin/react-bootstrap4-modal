@@ -41,7 +41,11 @@ react-bootstrap4-modal also contains a `ConfirmModal` component, which is intend
 Prop name       | Type                | Description
 ----------------|---------------------|-------------
 visible         | boolean (required)  | Whether or not the modal is currently visible
+className       | string (optional)   | If present, additional class names that will be added to the `<div class="modal">`.
 onClickBackdrop | function (optional) | If present, a function that will be called when the user clicks on the backdrop behind the modal
+wrapperProps    | object (optional)   | If present, additional props that will be added to the wrapper div around the modal and its backdrop.
+
+Any other props besides these will be added to the `<div class="modal">`.
 
 ### ConfirmModal Props
 
@@ -51,6 +55,8 @@ visible         | boolean (required)  | Whether or not the modal is currently vi
 onOK            | function (required) | A function that will be called when the user clicks "OK"
 onCancel        | function (required) | A function that will be called when the user clicks "Cancel"
 
+Any other props besides these will be passed to the `Modal` component this renders (so you can use any of the props from `Modal` here as well).
+
 ## License
 
-react-bootstrap4-modal is Copyright &copy; 2017 Nat Budin and released under the terms and conditions of the MIT License.  See the COPYING file for more details.
+react-bootstrap4-modal is Copyright &copy; 2017-2018 Nat Budin and released under the terms and conditions of the MIT License.  See the COPYING file for more details.
