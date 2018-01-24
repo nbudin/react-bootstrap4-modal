@@ -1,6 +1,6 @@
 # 1.2.0 - January 24, 2018
 
-* Add the ability to pass additional class names and props into the modal and its wrapper (thanks @Fi1osof!)
+* Add the ability to pass additional class names and props into the modal, its dialog, and its wrapper (thanks @Fi1osof!)
 
 # 1.1.2 - December 18, 2017
 
