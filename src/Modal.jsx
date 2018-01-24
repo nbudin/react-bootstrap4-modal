@@ -93,13 +93,14 @@ class Modal extends React.Component {
   }
 
   render = () => {
-    
+
     const {
       wrapperProps,
       className,
       visible,
       onClickBackdrop,
-      ...other
+      children,
+      ...other,
     } = this.props;
 
     return (
@@ -112,12 +113,12 @@ class Modal extends React.Component {
           role="dialog"
           aria-hidden={!this.state.visible}
           tabIndex="-1"
-          onClick={this.props.onClickBackdrop}
+          onClick={onClickBackdrop}
           {...other}
         >
           <div className="modal-dialog" role="document" onClick={this.stopPropagation}>
             <div className="modal-content">
-              {this.props.children}
+              {children}
             </div>
           </div>
         </div>
