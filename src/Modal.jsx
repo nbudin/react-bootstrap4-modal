@@ -88,15 +88,29 @@ class Modal extends React.Component {
     return null;
   }
 
-  render = () => (
-    <div>
+  render = () => {
+    
+    const {
+      wrapperProps,
+      className,
+      visible,
+      onClickBackdrop,
+      onOK,
+      onCancel,
+      ...other
+    } = this.props;
+
+    return <div
+      {...wrapperProps}
+    >
       <div
-        className={classNames('modal', 'fade', { show: this.state.visible })}
+        className={classNames('modal', 'fade', { show: this.state.visible }, className)}
         style={{ display: ((this.state.visible || this.state.transitioning) ? 'block' : 'none') }}
         role="dialog"
         aria-hidden={!this.state.visible}
         tabIndex="-1"
         onClick={this.props.onClickBackdrop}
+        {...other}
       >
         <div className="modal-dialog" role="document" onClick={this.stopPropagation}>
           <div className="modal-content">
@@ -106,7 +120,7 @@ class Modal extends React.Component {
       </div>
       {this.renderBackdrop()}
     </div>
-    )
+  };
 }
 
 export default Modal;
