@@ -20,7 +20,7 @@ class ModalTester extends React.Component {
   render = () => (
     <div>
       <button className="btn btn-primary" onClick={this.showModal}>Show modal</button>
-      <Modal visible={this.state.visible}>
+      <Modal visible={this.state.visible} dialogClassName="modal-lg">
         <div className="modal-header">
           <h5 className="modal-title">Test modal</h5>
         </div>

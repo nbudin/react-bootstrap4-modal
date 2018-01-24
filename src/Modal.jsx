@@ -25,14 +25,16 @@ class Modal extends React.Component {
     children: PropTypes.node.isRequired,
     onClickBackdrop: PropTypes.func,
     visible: PropTypes.bool.isRequired,
-    wrapperProps: PropTypes.object,
+    wrapperProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     className: PropTypes.string,
+    dialogClassName: PropTypes.string,
   };
 
   static defaultProps = {
     onClickBackdrop: null,
     wrapperProps: null,
     className: null,
+    dialogClassName: null,
   };
 
   constructor(props) {
@@ -93,14 +95,14 @@ class Modal extends React.Component {
   }
 
   render = () => {
-
     const {
       wrapperProps,
       className,
+      dialogClassName,
       visible,
       onClickBackdrop,
       children,
-      ...other,
+      ...other
     } = this.props;
 
     return (
@@ -116,7 +118,7 @@ class Modal extends React.Component {
           onClick={onClickBackdrop}
           {...other}
         >
-          <div className="modal-dialog" role="document" onClick={this.stopPropagation}>
+          <div className={classNames('modal-dialog', dialogClassName)} role="document" onClick={this.stopPropagation}>
             <div className="modal-content">
               {children}
             </div>
