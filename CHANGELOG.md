@@ -1,4 +1,8 @@
-# 1.2.1 - January 30, 2018
+# 1.2.2 - January 30, 2018
+
+* Fix another build issue that was causing yarn to install multiple copies of React in node_modules
+
+# 1.2.1 (YANKED) - January 30, 2018
 
 * Fix a build issue that was preventing the 1.2.0 features from actually working in the npm package
 
