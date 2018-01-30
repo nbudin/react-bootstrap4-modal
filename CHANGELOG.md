@@ -1,3 +1,7 @@
+# 1.2.1 - January 30, 2018
+
+* Fix a build issue that was preventing the 1.2.0 features from actually working in the npm package
+
 # 1.2.0 - January 24, 2018
 
 * Add the ability to pass additional class names and props into the modal, its dialog, and its wrapper (thanks @Fi1osof!)
