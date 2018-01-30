@@ -8,6 +8,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].js',
+    library: 'ReactBootstrap4Modal',
+    libraryTarget: 'umd',
   },
 
   resolve: {
