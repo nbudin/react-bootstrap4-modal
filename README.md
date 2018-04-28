@@ -57,6 +57,7 @@ Prop name       | Type                | Description
 visible         | boolean (required)  | Whether or not the modal is currently visible
 onOK            | function (required) | A function that will be called when the user clicks "OK"
 onCancel        | function (required) | A function that will be called when the user clicks "Cancel"
+disableButtons  | boolean (optional)  | If true, the OK and Cancel buttons will be disabled
 
 Any other props besides these will be passed to the `Modal` component this renders (so you can use any of the props from `Modal` here as well).
 

@@ -1,3 +1,7 @@
+# 1.3.0 - April 28, 2018
+
+* Add `disableButtons` prop to `ConfirmModal`
+
 # 1.2.2 - January 30, 2018
 
 * Fix another build issue that was causing yarn to install multiple copies of React in node_modules
