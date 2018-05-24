@@ -5,7 +5,7 @@ import classNames from 'classnames';
 let modalsShowing = 0;
 
 function modalWillShow() {
-  if (modalsShowing === 0) {
+  if (modalsShowing === 0 && document) {
     document.body.classList.add('modal-open');
   }
 
@@ -15,7 +15,7 @@ function modalWillShow() {
 function modalWillHide() {
   modalsShowing -= 1;
 
-  if (modalsShowing === 0) {
+  if (modalsShowing === 0 && document) {
     document.body.classList.remove('modal-open');
   }
 }
