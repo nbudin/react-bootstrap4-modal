@@ -1,3 +1,7 @@
+# 1.4.0 - June 29, 2018
+
+* Allow for stacked modals by setting `zIndex` based on number of modals currently showing (thanks @paulodeon!)
+
 # 1.3.0 - April 28, 2018
 
 * Add `disableButtons` prop to `ConfirmModal`
