@@ -1,6 +1,7 @@
 # 1.4.0 - June 29, 2018
 
 * Allow for stacked modals by setting `zIndex` based on number of modals currently showing (thanks @paulodeon!)
+* Don't break if there is no `document` (such as in test environments)
 
 # 1.3.0 - April 28, 2018
 
