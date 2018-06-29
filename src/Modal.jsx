@@ -40,10 +40,9 @@ class Modal extends React.Component {
   constructor(props) {
     super(props);
 
-    this.modalIndex = 0
-
     this.state = {
       visible: this.props.visible,
+      modalIndex: 0,
     };
   }
 
@@ -58,12 +57,11 @@ class Modal extends React.Component {
     if (this.props.visible !== prevProps.visible) {
       if (this.props.visible) {
         modalWillShow();
-        this.modalIndex = modalsShowing
       } else {
         modalWillHide();
       }
 
-      this.setState({ transitioning: true }, () => {
+      this.setState({ transitioning: true, modalIndex: modalsShowing }, () => {
         window.requestAnimationFrame(() => {
           this.setState({ visible: this.props.visible }, () => {
             window.setTimeout(() => { this.setState({ transitioning: false }); }, 150);
@@ -90,7 +88,7 @@ class Modal extends React.Component {
           className={classNames('modal-backdrop', 'fade', { show: this.state.visible })}
           onClick={this.props.onClickBackdrop}
           role="presentation"
-          style={{ zIndex: 1040 + this.modalIndex }}
+          style={{ zIndex: 1040 + this.state.modalIndex }}
         />
       );
     }
@@ -115,7 +113,10 @@ class Modal extends React.Component {
       >
         <div
           className={classNames('modal', 'fade', { show: this.state.visible }, className)}
-          style={{ display: ((this.state.visible || this.state.transitioning) ? 'block' : 'none'), zIndex: 1040 + this.modalIndex + 1 }}
+          style={{
+            display: ((this.state.visible || this.state.transitioning) ? 'block' : 'none'),
+            zIndex: 1040 + this.state.modalIndex + 1
+          }}
           role="dialog"
           aria-hidden={!this.state.visible}
           tabIndex="-1"
