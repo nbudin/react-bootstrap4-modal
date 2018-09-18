@@ -1,3 +1,7 @@
+# 1.5.0 - September 18, 2018
+
+* Use a `setTimeout` to make sure the animations on fade-in actually work on Chrome/Firefox (thanks @nikeee!)
+
 # 1.4.0 - June 29, 2018
 
 * Allow for stacked modals by setting `zIndex` based on number of modals currently showing (thanks @paulodeon!)

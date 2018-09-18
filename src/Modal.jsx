@@ -62,11 +62,11 @@ class Modal extends React.Component {
       }
 
       this.setState({ transitioning: true, modalIndex: modalsShowing }, () => {
-        window.requestAnimationFrame(() => {
+        window.setTimeout(() => {
           this.setState({ visible: this.props.visible }, () => {
             window.setTimeout(() => { this.setState({ transitioning: false }); }, 150);
           });
-        });
+        }, 16); // I don't like this magic number but I haven't found a better way
       });
     }
   }
