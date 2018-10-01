@@ -56,7 +56,7 @@ Prop name       | Type                | Description
 ----------------|---------------------|-------------
 visible         | boolean (required)  | Whether or not the modal is currently visible
 onOK            | function (required) | A function that will be called when the user clicks "OK"
-OKText          | string (optional)   | The text that is displayed on the OK button
+okText          | string (optional)   | The text that is displayed on the OK button
 onCancel        | function (required) | A function that will be called when the user clicks "Cancel"
 cancelText      | string (optional)   | The text that is displayed on the Cancel button
 disableButtons  | boolean (optional)  | If true, the OK and Cancel buttons will be disabled
