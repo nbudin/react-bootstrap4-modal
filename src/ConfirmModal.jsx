@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from './index';
 
-const ConfirmModal = ({ visible, onOK, onCancel, children, disableButtons = false, ...other }) => (
+const ConfirmModal = ({ visible, onOK, onCancel, children, disableButtons = false, okText = 'OK', cancelText = 'Cancel', ...other }) => (
   <Modal visible={visible} {...other}>
     <div className="modal-header">
       <h5 className="modal-title">Confirmation</h5>
@@ -12,10 +12,10 @@ const ConfirmModal = ({ visible, onOK, onCancel, children, disableButtons = fals
     </div>
     <div className="modal-footer">
       <button type="button" className="btn btn-secondary" onClick={onCancel} disabled={disableButtons}>
-        Cancel
+        {cancelText}
       </button>
       <button type="button" className="btn btn-primary" onClick={onOK} disabled={disableButtons}>
-        OK
+        {okText}
       </button>
     </div>
   </Modal>
@@ -27,10 +27,14 @@ ConfirmModal.propTypes = {
   onOK: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   disableButtons: PropTypes.bool,
+  okText: PropTypes.string,
+  cancelText: PropTypes.string,
 };
 
 ConfirmModal.defaultProps = {
   disableButtons: false,
+  okText: 'OK',
+  cancelText: 'Cancel',
 };
 
 export default ConfirmModal;
