@@ -1,3 +1,7 @@
+# 1.6.0 - October 1, 2018
+
+* Add `okText` and `cancelText` props to `ConfirmModal` to allow customization and i18n (thanks @nikeee!)
+
 # 1.5.0 - September 18, 2018
 
 * Use a `setTimeout` to make sure the animations on fade-in actually work on Chrome/Firefox (thanks @nikeee!)
