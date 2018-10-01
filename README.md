@@ -1,5 +1,7 @@
 # react-bootstrap4-modal
 
+<a href="https://nodei.co/npm/react-bootstrap4-modal/"><img src="https://nodei.co/npm/react-bootstrap4-modal.png?downloads=true&downloadRank=true&stars=true"></a>
+
 A really simple implementation of Bootstrap 4 modal dialogs for React
 
 ## Usage
