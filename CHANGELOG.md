@@ -1,3 +1,8 @@
+# 1.6.1 - October 2, 2018
+
+* Add TypeScript definitions (thanks @nikeee!)
+* Ignore the src directory in the built package (thanks again @nikeee!)
+
 # 1.6.0 - October 1, 2018
 
 * Add `okText` and `cancelText` props to `ConfirmModal` to allow customization and i18n (thanks @nikeee!)
