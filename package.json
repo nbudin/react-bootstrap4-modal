@@ -9,7 +9,7 @@
   "files": [
     "dist",
     "lib",
-    "src"
+    "index.d.ts"
   ],
   "scripts": {
     "test": "npm run lint",
