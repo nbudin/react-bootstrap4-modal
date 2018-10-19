@@ -1,3 +1,7 @@
+# 1.6.2 - October 19, 2018
+
+* Fixes to make the 1.6.1 changes take effect in the built package (thanks again @nikeee!)
+
 # 1.6.1 - October 2, 2018
 
 * Add TypeScript definitions (thanks @nikeee!)
