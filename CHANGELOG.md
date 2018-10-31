@@ -1,3 +1,9 @@
+# 1.7.0 - October 31, 2018 
+
+* SPOOOOOKY Halloween release!
+* Adds an optional `fade` prop to allow disabling the fade in/out animation (thanks @paulodeon!)
+* oooOOOOOOooooo
+
 # 1.6.2 - October 19, 2018
 
 * Fixes to make the 1.6.1 changes take effect in the built package (thanks again @nikeee!)
