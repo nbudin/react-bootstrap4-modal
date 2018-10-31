@@ -49,6 +49,7 @@ className       | string (optional)   | If present, additional class names that 
 dialogClassName | string (optional)   | If present, additional class names that will be added to the `<div class="modal-dialog">` (such as `modal-lg` or `modal-sm`).
 onClickBackdrop | function (optional) | If present, a function that will be called when the user clicks on the backdrop behind the modal
 wrapperProps    | object (optional)   | If present, additional props that will be added to the wrapper div around the modal and its backdrop.
+fade            | boolean (optional)  | If true (default) will apply the fade class and some timeouts to fade the modal and backdrop in, if false the transition will be instant and the fade class will not be applied
 
 Any other props besides these will be added to the `<div class="modal">`.
 
