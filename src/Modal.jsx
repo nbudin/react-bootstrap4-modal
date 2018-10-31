@@ -28,6 +28,7 @@ class Modal extends React.Component {
     wrapperProps: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     className: PropTypes.string,
     dialogClassName: PropTypes.string,
+    fade: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -35,6 +36,7 @@ class Modal extends React.Component {
     wrapperProps: null,
     className: null,
     dialogClassName: null,
+    fade: true,
   };
 
   constructor(props) {
@@ -61,13 +63,17 @@ class Modal extends React.Component {
         modalWillHide();
       }
 
-      this.setState({ transitioning: true, modalIndex: modalsShowing }, () => {
-        window.setTimeout(() => {
-          this.setState({ visible: this.props.visible }, () => {
-            window.setTimeout(() => { this.setState({ transitioning: false }); }, 150);
-          });
-        }, 16); // I don't like this magic number but I haven't found a better way
-      });
+      if (this.props.fade) {
+        this.setState({ transitioning: true, modalIndex: modalsShowing }, () => {
+          window.setTimeout(() => {
+            this.setState({ visible: this.props.visible }, () => {
+              window.setTimeout(() => { this.setState({ transitioning: false }); }, 150);
+            });
+          }, 16); // I don't like this magic number but I haven't found a better way
+        });
+      } else {
+        this.setState({ visible: this.props.visible });
+      }
     }
   }
 
@@ -85,7 +91,7 @@ class Modal extends React.Component {
     if (this.state.visible || this.state.transitioning) {
       return (
         <div
-          className={classNames('modal-backdrop', 'fade', { show: this.state.visible })}
+          className={classNames('modal-backdrop', { show: this.state.visible, fade: this.props.fade })}
           onClick={this.props.onClickBackdrop}
           role="presentation"
           style={{ zIndex: 1040 + this.state.modalIndex }}
@@ -104,6 +110,7 @@ class Modal extends React.Component {
       visible,
       onClickBackdrop,
       children,
+      fade,
       ...other
     } = this.props;
 
@@ -112,10 +119,10 @@ class Modal extends React.Component {
         {...wrapperProps}
       >
         <div
-          className={classNames('modal', 'fade', { show: this.state.visible }, className)}
+          className={classNames('modal', { show: this.state.visible, fade: this.props.fade }, className)}
           style={{
             display: ((this.state.visible || this.state.transitioning) ? 'block' : 'none'),
-            zIndex: 1040 + this.state.modalIndex + 1
+            zIndex: 1040 + this.state.modalIndex + 1,
           }}
           role="dialog"
           aria-hidden={!this.state.visible}
