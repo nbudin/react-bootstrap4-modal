@@ -1,3 +1,7 @@
+# 1.7.1 - May 21, 2019
+
+* Fixed TypeScript definitions to use React's MouseEvent rather than the browser native one (thanks again @nikeee!)
+
 # 1.7.0 - October 31, 2018 
 
 * SPOOOOOKY Halloween release!
