@@ -2,7 +2,7 @@ import React from 'react';
 
 export type ModalProps = {
     children: React.ReactChild | React.ReactChild[];
-    onClickBackdrop?: ((ev: MouseEvent) => void) | null;
+    onClickBackdrop?: ((ev: React.MouseEvent<HTMLDivElement>) => void) | null;
     visible: boolean;
     wrapperProps?: object | null;
     className?: string;
@@ -19,8 +19,8 @@ export default class Modal extends React.Component<ModalProps, ModalState> {
 }
 
 export type ConfirmModalProps = ModalProps & {
-    onOK: (ev: MouseEvent) => void;
-    onCancel: (ev: MouseEvent) => void;
+    onOK: (ev: React.MouseEvent<HTMLButtonElement>) => void;
+    onCancel: (ev: React.MouseEvent<HTMLButtonElement>) => void;
     /** Defaults to false */
     disableButtons?: boolean;
     /** Defaults to 'OK' */
