@@ -1,3 +1,7 @@
+# 1.7.2 - June 19, 2019
+
+* Use componentDidMount rather than componentWillMount, which is deprecated (thanks @bbonamin!)
+
 # 1.7.1 - May 21, 2019
 
 * Fixed TypeScript definitions to use React's MouseEvent rather than the browser native one (thanks again @nikeee!)
