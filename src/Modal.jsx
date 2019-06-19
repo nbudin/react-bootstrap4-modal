@@ -48,7 +48,7 @@ class Modal extends React.Component {
     };
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     if (this.props.visible) {
       modalWillShow();
     }
