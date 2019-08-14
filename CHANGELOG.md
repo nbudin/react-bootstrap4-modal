@@ -1,3 +1,7 @@
+# 1.7.3 - August 14, 2019
+
+* Avoid setState on umounted component warnings
+
 # 1.7.2 - June 19, 2019
 
 * Use componentDidMount rather than componentWillMount, which is deprecated (thanks @bbonamin!)
@@ -6,7 +10,7 @@
 
 * Fixed TypeScript definitions to use React's MouseEvent rather than the browser native one (thanks again @nikeee!)
 
-# 1.7.0 - October 31, 2018 
+# 1.7.0 - October 31, 2018
 
 * SPOOOOOKY Halloween release!
 * Adds an optional `fade` prop to allow disabling the fade in/out animation (thanks @paulodeon!)
