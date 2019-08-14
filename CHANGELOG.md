@@ -1,3 +1,7 @@
+# 1.7.4 - August 14, 2019
+
+* Avoid more setState on umounted component warnings
+
 # 1.7.3 - August 14, 2019
 
 * Avoid setState on umounted component warnings
