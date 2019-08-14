@@ -40,7 +40,7 @@
     "react": "^16.0",
     "webpack": "^3.2.0",
     "webpack-bundle-size-analyzer": "^2.7.0",
-    "webpack-dev-server": "^2.9.7",
+    "webpack-dev-server": "^3.1.11",
     "webpack-merge": "^4.1.1"
   },
   "peerDependencies": {
