@@ -1,3 +1,8 @@
+# 1.7.5 - June 30, 2020
+
+* Fixed TypeScript definitions to be more accepting about children prop, and to correctly reflect
+  the type of ConfirmModal
+
 # 1.7.4 - August 14, 2019
 
 * Avoid more setState on umounted component warnings
