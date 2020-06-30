@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type ModalProps = {
-    children: React.ReactChild | React.ReactChild[];
+    children: React.ReactNode;
     onClickBackdrop?: ((ev: React.MouseEvent<HTMLDivElement>) => void) | null;
     visible: boolean;
     wrapperProps?: object | null;
@@ -29,4 +29,4 @@ export type ConfirmModalProps = ModalProps & {
     cancelText?: string;
 };
 
-export const ConfirmModal: (props: ConfirmModalProps) => Modal;
+export const ConfirmModal: React.FunctionComponent<ConfirmModalProps>;
