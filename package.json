@@ -45,7 +45,7 @@
     "webpack-merge": "^4.1.1"
   },
   "peerDependencies": {
-    "react": "^15.6.1 || ^16.0"
+    "react": "^15.6.1 || ^16.0 || ^17.0"
   },
   "dependencies": {
     "@types/react": "^16.9.41",
