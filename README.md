@@ -2,7 +2,7 @@
 
 <a href="https://nodei.co/npm/react-bootstrap4-modal/"><img src="https://nodei.co/npm/react-bootstrap4-modal.png?downloads=true&downloadRank=true&stars=true"></a>
 
-A really simple implementation of Bootstrap 4 modal dialogs for React
+A really simple implementation of Bootstrap 4 modal dialogs for React.  Also works with Bootstrap 5!
 
 ## Usage
 
@@ -68,4 +68,4 @@ Any other props besides these will be passed to the `Modal` component this rende
 
 ## License
 
-react-bootstrap4-modal is Copyright &copy; 2017-2018 Nat Budin and released under the terms and conditions of the MIT License.  See the COPYING file for more details.
+react-bootstrap4-modal is Copyright &copy; 2017-2021 Nat Budin and released under the terms and conditions of the MIT License.  See the COPYING file for more details.

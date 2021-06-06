@@ -1,3 +1,12 @@
+# 2.0.0 - June 6, 2021
+
+* Require React 17 (BREAKING CHANGE)
+* Tree shakeable ES modules (BREAKING CHANGE)
+* Convert all source to TypeScript
+* Convert all components to function components
+* Use the new JSX runtime for rendering
+* Make Modal available as a named export in addition to a default export
+
 # 1.7.6 - May 16, 2021
 
 * Allow React 17 as a peer dependency
