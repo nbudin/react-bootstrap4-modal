@@ -13,11 +13,12 @@ export default defineConfig({
     },
     sourcemap: true,
     rollupOptions: {
-      external: ['react', 'react/jsx-runtime'],
+      external: ['react', 'react/jsx-runtime', 'react-dom'],
       output: {
         exports: 'named',
         globals: {
           react: 'React',
+          'react-dom': 'react-dom',
           'react/jsx-runtime': 'react/jsx-runtime',
         },
       },
