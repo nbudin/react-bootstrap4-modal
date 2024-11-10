@@ -1,4 +1,5 @@
 import React, { HTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 
 let modalsShowing = 0;
@@ -31,6 +32,7 @@ export type ModalProps = {
   className?: string;
   dialogClassName?: string;
   fade?: boolean;
+  inline?: boolean;
 };
 
 function Modal(props: ModalProps): JSX.Element {
@@ -103,10 +105,11 @@ function Modal(props: ModalProps): JSX.Element {
     onClickBackdrop,
     children,
     fade,
+    inline,
     ...other
   } = props;
 
-  return (
+  const ui = (
     <div {...wrapperProps}>
       <div
         className={classNames('modal', { show: visible, fade: fade ?? true }, className)}
@@ -131,6 +134,12 @@ function Modal(props: ModalProps): JSX.Element {
       {renderBackdrop()}
     </div>
   );
+
+  if (inline) {
+    return ui;
+  } else {
+    return <>{createPortal(ui, document.body)}</>;
+  }
 }
 
 export default Modal;
