@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import Modal from '../src/Modal';
+import Modal from './src/Modal';
 
 function ModalTester({}) {
   const [visible, setVisible] = useState(false);

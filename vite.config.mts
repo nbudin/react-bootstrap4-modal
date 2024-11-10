@@ -11,6 +11,7 @@ export default defineConfig({
       name: 'ReactBootstrap4Modal',
       fileName: 'index',
     },
+    sourcemap: true,
     rollupOptions: {
       external: ['react', 'react/jsx-runtime'],
       output: {
