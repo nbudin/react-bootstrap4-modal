@@ -10,6 +10,8 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Read .node-version
         id: node-version
         run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
