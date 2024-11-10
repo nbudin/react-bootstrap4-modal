@@ -19,6 +19,8 @@ jobs:
       - name: Read .node-version
         id: node-version
         run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
+      - name: corepack enable
+        run: corepack enable
       - name: install node
         uses: actions/setup-node@v4
         with:
@@ -36,6 +38,8 @@ jobs:
       - name: Read .node-version
         id: node-version
         run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
+      - name: corepack enable
+        run: corepack enable
       - name: install node
         uses: actions/setup-node@v4
         with:
@@ -53,6 +57,8 @@ jobs:
       - name: Read .node-version
         id: node-version
         run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
+      - name: corepack enable
+        run: corepack enable
       - name: install node
         uses: actions/setup-node@v4
         with:
