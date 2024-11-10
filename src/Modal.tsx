@@ -1,11 +1,5 @@
-import React, {
-  HTMLAttributes,
-  ReactNode,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { HTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 
 let modalsShowing = 0;
@@ -34,10 +28,12 @@ export type ModalProps = {
   children: ReactNode;
   onClickBackdrop?: React.MouseEventHandler<HTMLDivElement>;
   visible: boolean;
-  wrapperProps?: HTMLAttributes<HTMLDivElement>; // eslint-disable-line react/forbid-prop-types
+  wrapperProps?: HTMLAttributes<HTMLDivElement>;
   className?: string;
   dialogClassName?: string;
   fade?: boolean;
+  inline?: boolean;
+  target?: HTMLElement | null;
 };
 
 function Modal(props: ModalProps): JSX.Element {
@@ -45,6 +41,7 @@ function Modal(props: ModalProps): JSX.Element {
   const [modalIndex, setModalIndex] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
   const wasVisibleRef = useRef(false);
+  const fadeRef = useRef(props.fade);
 
   useEffect(() => {
     if (props.visible) {
@@ -55,7 +52,7 @@ function Modal(props: ModalProps): JSX.Element {
     }
 
     if (props.visible || wasVisibleRef.current) {
-      if (props.fade ?? true) {
+      if (fadeRef.current ?? true) {
         setTransitioning(true);
         setModalIndex(modalsShowing);
         if (typeof window !== 'undefined') {
@@ -78,6 +75,10 @@ function Modal(props: ModalProps): JSX.Element {
     }
   }, [props.visible]);
 
+  useEffect(() => {
+    fadeRef.current = props.fade;
+  }, [props.fade]);
+
   const renderBackdrop = () => {
     if (visible || transitioning) {
       return (
@@ -98,19 +99,22 @@ function Modal(props: ModalProps): JSX.Element {
 
   const {
     wrapperProps,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     visible: unusedVisible,
     className,
     dialogClassName,
     onClickBackdrop,
     children,
     fade,
+    inline,
+    target,
     ...other
   } = props;
 
-  return (
+  const ui = (
     <div {...wrapperProps}>
       <div
-        className={classNames('modal', { show: visible, fade: props.fade ?? true }, className)}
+        className={classNames('modal', { show: visible, fade: fade ?? true }, className)}
         style={{
           display: visible || transitioning ? 'block' : 'none',
           zIndex: 1040 + modalIndex + 1,
@@ -132,6 +136,12 @@ function Modal(props: ModalProps): JSX.Element {
       {renderBackdrop()}
     </div>
   );
+
+  if (inline) {
+    return ui;
+  } else {
+    return <>{createPortal(ui, target ?? document.body)}</>;
+  }
 }
 
 export default Modal;

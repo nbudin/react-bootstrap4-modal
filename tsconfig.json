@@ -11,15 +11,8 @@
     "target": "ES2015", // specify ECMAScript target version
     "allowJs": true, // allow a partial TypeScript and JavaScript codebase,
     "allowSyntheticDefaultImports": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "src/@types",
-    ],
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ES2016"
-    ],
+    "typeRoots": ["node_modules/@types", "src/@types"],
+    "lib": ["DOM", "DOM.Iterable", "ES2016"],
     "noImplicitAny": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -30,11 +23,5 @@
       }
     ]
   },
-  "include": [
-    "./src/"
-  ],
-  "exclude": [
-    "./src/__tests__",
-    "./src/stories"
-  ]
+  "include": ["./src/", "./test/", "ModalTester.tsx"]
 }

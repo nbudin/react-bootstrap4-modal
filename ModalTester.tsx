@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import ReactDOM from 'react-dom';
-import Modal from '../src/Modal';
+import { createRoot } from 'react-dom/client';
+import Modal from './src/Modal';
 
-function ModalTester({}) {
+function ModalTester() {
   const [visible, setVisible] = useState(false);
 
   const showModal = () => setVisible(true);
@@ -29,5 +29,9 @@ function ModalTester({}) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(<ModalTester />, document.getElementById('modal-tester'));
+  const container = document.getElementById('modal-tester');
+  if (container) {
+    const root = createRoot(container);
+    root.render(<ModalTester />);
+  }
 });

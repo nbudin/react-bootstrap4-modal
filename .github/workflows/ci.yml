@@ -1,0 +1,93 @@
+name: Continuous integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typescript:
+    name: typescript
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read .node-version
+        id: node-version
+        run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
+      - name: install node
+        uses: actions/setup-node@v4
+        with:
+          cache: yarn
+          node-version: ${{ steps.node-version.outputs.node-version }}
+      - name: yarn install
+        run: yarn install
+      - name: tsc on resulting generated files
+        run: yarn run tsc --noEmit
+  eslint:
+    name: eslint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read .node-version
+        id: node-version
+        run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
+      - name: install node
+        uses: actions/setup-node@v4
+        with:
+          cache: yarn
+          node-version: ${{ steps.node-version.outputs.node-version }}
+      - name: yarn install
+        run: yarn install
+      - name: eslint
+        run: yarn run lint
+  vitest:
+    name: vitest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read .node-version
+        id: node-version
+        run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
+      - name: install node
+        uses: actions/setup-node@v4
+        with:
+          cache: yarn
+          node-version: ${{ steps.node-version.outputs.node-version }}
+      - name: yarn install
+        run: yarn install
+      - name: build
+        run: yarn run test
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v5
+        if: always() # always run even if the previous step fails
+        with:
+          check_name: 'Vitest Report'
+          report_paths: 'test/reports/TEST-*.xml'
+      - name: Archive HTML test reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: vitest-reports
+          path: test/html_reports/*
+  update-release-draft:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.event.ref == 'refs/heads/main'
+    needs:
+      - eslint
+      - typescript
+      - vitest
+    outputs:
+      name: ${{ steps.release-drafter.outputs.name }}
+      html_url: ${{ steps.release-drafter.outputs.html_url }}
+    steps:
+      - uses: release-drafter/release-drafter@v6
+        id: release-drafter
+        with:
+          config-name: release-drafter.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
