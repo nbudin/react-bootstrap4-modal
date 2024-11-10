@@ -22,6 +22,7 @@ jobs:
           node-version: ${{ steps.node-version.outputs.node-version }}
           registry-url: 'https://registry.npmjs.org'
       - run: yarn
-      - run: yarn npm publish --provenance --access public
+      - run: yarn pack
+      - run: npm publish package.tgz --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
