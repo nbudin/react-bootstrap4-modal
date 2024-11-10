@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react-swc';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
@@ -22,5 +22,9 @@ export default defineConfig({
         },
       },
     },
+  },
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['./test/setupTests.ts'],
   },
 });

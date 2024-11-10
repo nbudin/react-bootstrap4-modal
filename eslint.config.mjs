@@ -5,6 +5,7 @@ import globals from 'globals';
 import js from '@eslint/js';
 import reactPlugin from 'eslint-plugin-react';
 import hooksPlugin from 'eslint-plugin-react-hooks';
+import jestDom from 'eslint-plugin-jest-dom';
 
 const flatReact = /** @type {NonNullable<typeof reactPlugin.configs.flat>} */ (
   reactPlugin.configs.flat
@@ -17,6 +18,7 @@ export default typescriptEslint.config(
   // @ts-expect-error eslint-plugin-react-hooks and typescriptEslint are fighting
   flatReact.recommended,
   flatReact['jsx-runtime'],
+  jestDom.configs['flat/recommended'],
   {
     plugins: {
       'react-hooks': hooksPlugin,
