@@ -10,10 +10,14 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@v4
+      - name: Read .node-version
+        id: node-version
+        run: echo "node-version=$(cat .node-version)" >> $GITHUB_OUTPUT
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          cache: yarn
+          node-version: ${{ steps.node-version.outputs.node-version }}
           registry-url: 'https://registry.npmjs.org'
       - run: yarn
       - run: yarn npm publish --provenance --access public
