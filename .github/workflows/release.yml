@@ -25,6 +25,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       - run: yarn
       - run: yarn version ${{ github.event.release.name }}
+      - run: yarn run build
       - run: yarn pack
       - run: npm publish package.tgz --provenance --access public
         env:
