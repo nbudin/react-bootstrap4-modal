@@ -33,6 +33,7 @@ export type ModalProps = {
   dialogClassName?: string;
   fade?: boolean;
   inline?: boolean;
+  target?: HTMLElement | null;
 };
 
 function Modal(props: ModalProps): JSX.Element {
@@ -106,6 +107,7 @@ function Modal(props: ModalProps): JSX.Element {
     children,
     fade,
     inline,
+    target,
     ...other
   } = props;
 
@@ -138,7 +140,7 @@ function Modal(props: ModalProps): JSX.Element {
   if (inline) {
     return ui;
   } else {
-    return <>{createPortal(ui, document.body)}</>;
+    return <>{createPortal(ui, target ?? document.body)}</>;
   }
 }
 
