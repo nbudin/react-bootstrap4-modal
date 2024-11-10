@@ -1,6 +1,6 @@
 {
   "name": "react-bootstrap4-modal",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "A simple Bootstrap 4 modal component in React",
   "main": "dist/index.umd.cjs",
   "module": "dist/index.js",
