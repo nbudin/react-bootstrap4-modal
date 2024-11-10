@@ -1,11 +1,4 @@
-import React, {
-  HTMLAttributes,
-  ReactNode,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { HTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 let modalsShowing = 0;
@@ -34,7 +27,7 @@ export type ModalProps = {
   children: ReactNode;
   onClickBackdrop?: React.MouseEventHandler<HTMLDivElement>;
   visible: boolean;
-  wrapperProps?: HTMLAttributes<HTMLDivElement>; // eslint-disable-line react/forbid-prop-types
+  wrapperProps?: HTMLAttributes<HTMLDivElement>;
   className?: string;
   dialogClassName?: string;
   fade?: boolean;
@@ -45,6 +38,7 @@ function Modal(props: ModalProps): JSX.Element {
   const [modalIndex, setModalIndex] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
   const wasVisibleRef = useRef(false);
+  const fadeRef = useRef(props.fade);
 
   useEffect(() => {
     if (props.visible) {
@@ -55,7 +49,7 @@ function Modal(props: ModalProps): JSX.Element {
     }
 
     if (props.visible || wasVisibleRef.current) {
-      if (props.fade ?? true) {
+      if (fadeRef.current ?? true) {
         setTransitioning(true);
         setModalIndex(modalsShowing);
         if (typeof window !== 'undefined') {
@@ -78,6 +72,10 @@ function Modal(props: ModalProps): JSX.Element {
     }
   }, [props.visible]);
 
+  useEffect(() => {
+    fadeRef.current = props.fade;
+  }, [props.fade]);
+
   const renderBackdrop = () => {
     if (visible || transitioning) {
       return (
@@ -98,6 +96,7 @@ function Modal(props: ModalProps): JSX.Element {
 
   const {
     wrapperProps,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     visible: unusedVisible,
     className,
     dialogClassName,
@@ -110,7 +109,7 @@ function Modal(props: ModalProps): JSX.Element {
   return (
     <div {...wrapperProps}>
       <div
-        className={classNames('modal', { show: visible, fade: props.fade ?? true }, className)}
+        className={classNames('modal', { show: visible, fade: fade ?? true }, className)}
         style={{
           display: visible || transitioning ? 'block' : 'none',
           zIndex: 1040 + modalIndex + 1,
