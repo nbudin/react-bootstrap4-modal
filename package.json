@@ -2,12 +2,13 @@
   "name": "react-bootstrap4-modal",
   "version": "2.0.0",
   "description": "A simple Bootstrap 4 modal component in React",
-  "main": "lib/index.js",
+  "main": "dist/index.umd.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "https://github.com/nbudin/react-bootstrap4-modal",
   "author": "Nat Budin <natbudin@gmail.com>",
   "license": "MIT",
   "sideEffects": false,
-  "private": false,
   "files": [
     "lib"
   ],
@@ -16,41 +17,32 @@
     "analyze": "NODE_ENV=production ANALYZE_BUNDLE_SIZE=true webpack --progress --config=webpack.config.js && rm -rf public/packs",
     "analyze:json": "NODE_ENV=production webpack --profile --json --config=webpack.config.js >stats.json",
     "test": "npm run lint",
-    "build": "rm -rf lib/* && tsc --declaration --outDir lib/ --emitDeclarationOnly --declarationMap && babel --extensions '.ts,.tsx' src --out-dir lib --source-maps true",
+    "build": "vite build && tsc --declaration --outDir dist/ --emitDeclarationOnly --declarationMap",
     "prepublishOnly": "npm run build",
     "lint": "eslint --ext .js --ext .jsx --ext .ts --ext .tsx src",
     "start": "webpack serve --progress --config webpack.config.js"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.3",
-    "@babel/core": "^7.14.3",
-    "@babel/preset-env": "^7.14.4",
-    "@babel/preset-react": "^7.13.13",
-    "@babel/preset-typescript": "^7.13.0",
-    "@types/react-dom": "^17.0.6",
+    "@types/react": "^18.0",
+    "@types/react-dom": "^18.0",
     "@typescript-eslint/eslint-plugin": "^4.26.0",
     "@typescript-eslint/parser": "^4.26.0",
-    "@webpack-cli/serve": "^1.4.0",
-    "babel-loader": "^8.2.2",
-    "babel-plugin-add-import-extension": "^1.5.1",
+    "@vitejs/plugin-react-swc": "^3.7.1",
     "eslint": "^7.26.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.3.0",
-    "react": "^17.0",
-    "react-dom": "^17.0.2",
-    "ts-loader": "^9.2.3",
+    "react": "^18.0",
+    "react-dom": "^18.0.2",
     "typescript": "^4.3.2",
-    "webpack": "^5.0.0",
-    "webpack-bundle-analyzer": "^4.4.1",
-    "webpack-cli": "^4.7.0",
-    "webpack-dev-server": "^4.0.0-beta.3"
+    "vite": "^5.4.10",
+    "vite-plugin-dts": "^4.3.0",
+    "vite-tsconfig-paths": "^5.1.1"
   },
   "peerDependencies": {
     "react": "^17.0"
   },
   "dependencies": {
-    "@types/react": "^17.0",
     "classnames": "^2.3.1"
   }
 }
