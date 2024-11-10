@@ -10,3 +10,7 @@
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+
+/coverage
+/test/html_reports
+/test/reports

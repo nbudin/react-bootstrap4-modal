@@ -26,5 +26,17 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
     setupFiles: ['./test/setupTests.ts'],
+    reporters: [
+      'default',
+      ['junit', { outputFile: './test/reports/TEST-vitest.xml' }],
+      ['html', { outputFile: './test/html_reports/vitest-report.html' }],
+    ],
+    coverage: {
+      enabled: true,
+      include: ['./src/**/*.{js,jsx,ts,tsx}'],
+      reportsDirectory: './coverage',
+      reporter: ['text', 'lcov'],
+      reportOnFailure: true,
+    },
   },
 });
