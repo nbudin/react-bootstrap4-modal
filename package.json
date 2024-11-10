@@ -10,17 +10,14 @@
   "license": "MIT",
   "sideEffects": false,
   "files": [
-    "lib"
+    "dist"
   ],
   "type": "module",
   "scripts": {
-    "analyze": "NODE_ENV=production ANALYZE_BUNDLE_SIZE=true webpack --progress --config=webpack.config.js && rm -rf public/packs",
-    "analyze:json": "NODE_ENV=production webpack --profile --json --config=webpack.config.js >stats.json",
-    "test": "npm run lint",
     "build": "vite build && tsc --declaration --outDir dist/ --emitDeclarationOnly --declarationMap",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "yarn run build",
     "lint": "eslint --ext .js --ext .jsx --ext .ts --ext .tsx src",
-    "start": "webpack serve --progress --config webpack.config.js"
+    "start": "vite dev"
   },
   "devDependencies": {
     "@types/react": "^18.0",
@@ -40,7 +37,7 @@
     "vite-tsconfig-paths": "^5.1.1"
   },
   "peerDependencies": {
-    "react": "^17.0"
+    "react": "^18.0"
   },
   "dependencies": {
     "classnames": "^2.3.1"
