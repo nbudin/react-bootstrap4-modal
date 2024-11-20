@@ -137,10 +137,14 @@ function Modal(props: ModalProps): JSX.Element {
     </div>
   );
 
-  if (inline) {
-    return ui;
+  const actualTarget = inline
+    ? undefined
+    : (target ?? (typeof document !== 'undefined' ? document.body : undefined));
+
+  if (actualTarget) {
+    return <>{createPortal(ui, actualTarget)}</>;
   } else {
-    return <>{createPortal(ui, target ?? document.body)}</>;
+    return ui;
   }
 }
 
