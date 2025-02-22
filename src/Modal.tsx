@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { HTMLAttributes, JSX, ReactNode, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 
