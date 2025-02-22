@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { JSX, ReactNode } from 'react';
 import Modal from './index';
 
 export type ConfirmModalProps = {
