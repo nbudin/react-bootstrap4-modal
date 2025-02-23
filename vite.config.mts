@@ -4,12 +4,17 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import dts from 'vite-plugin-dts';
 
 export default defineConfig({
-  plugins: [react(), tsconfigPaths(), dts({ insertTypesEntry: true })],
+  plugins: [
+    react(),
+    tsconfigPaths(),
+    dts({ insertTypesEntry: true, exclude: ['./dist', './lib', './test', './ModalTester.tsx'] }),
+  ],
   build: {
     lib: {
       entry: 'src/index.ts',
       name: 'ReactBootstrap4Modal',
       fileName: 'index',
+      formats: ['es', 'cjs'],
     },
     sourcemap: true,
     rollupOptions: {
